@@ -5,7 +5,6 @@ import Box from "@/components/Box";
 
 import SearchContent from "./components/SearchContent";
 import getDoctorsByQuery from "@/actions/getDoctorsByQuery";
-import AppointmentModal from "./components/AppointmentModal";
 
 interface SearchProps {
     searchParams: {

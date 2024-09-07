@@ -7,11 +7,10 @@ const getKendraByQuery = async (query: string): Promise<Kendra[]> => {
     cookies: cookies,
   });
 
-  // Log query for debugging
   console.log("Search Query:", query);
 
   if (!query) {
-    // Return all kendras if no search query is provided
+  
     const { data, error } = await supabase
       .from('janaushadhi_kendra')
       .select('*')
@@ -26,13 +25,12 @@ const getKendraByQuery = async (query: string): Promise<Kendra[]> => {
     return data as Kendra[];
   }
 
-  // If there is a query, use Full-Text Search
   const { data, error } = await supabase
     .from('janaushadhi_kendra')
     .select('*')
     .textSearch('fts', query, {
-      type: 'plain',  // Use plain for simple text search
-      config: 'english',  // Language config for search
+      type: 'plain', 
+      config: 'english',  
     })
     .order('state', { ascending: true });
 

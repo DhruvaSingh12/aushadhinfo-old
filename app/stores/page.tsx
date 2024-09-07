@@ -1,10 +1,9 @@
 import Header from "@/components/Header";
 import Box from "@/components/Box";
-import getMedicineByQuery from "@/actions/getMedicineByQuery";
-import SearchInput from "./components/SearchInput";
 import SearchContent from "./components/SearchContent";
 import getKendraByQuery from "@/actions/getKendraByQuery";
 import MapComponent from "./components/MapComponent";
+import SearchInput from "./components/SearchInput";
 
 interface SearchProps {
     searchParams: {
@@ -35,6 +34,7 @@ const Search = async ({ searchParams }: SearchProps) => {
                             Search Nearest Jan Aushadhi Kendra
                         </h1>
                     </div>
+                            <SearchInput />
                 </Header>
             </Box>
             <div className="

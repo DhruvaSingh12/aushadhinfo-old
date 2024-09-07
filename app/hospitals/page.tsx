@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Box from "@/components/Box";
 import SearchContent from "./components/SearchContent";
 import getHospitalsByQuery from "@/actions/getHospitalsByQuery";
+import SearchInput from "./components/SearchInput";
 
 interface SearchProps {
     searchParams: {
@@ -38,6 +39,7 @@ const Search = async ({ searchParams }: SearchProps) => {
                         <h1 className="text-transparent bg-clip-text text-center bg-gradient-to-r from-teal-500 to-blue-600 text-4xl md:text-5xl font-extrabold uppercase tracking-widest">
                             Search Your Nearest Hospital
                         </h1>
+                        <SearchInput />
                         </div>
                     </Header>
                 </Box>

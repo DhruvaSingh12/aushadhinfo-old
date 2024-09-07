@@ -32,7 +32,7 @@ const Search = async ({ searchParams }: SearchProps) => {
                 gap-y-2
                 bg-white
                 h-full
-                overflow-x-hidden 
+                overflow-x-hidden
             ">
                 <Box>
                     <Header>

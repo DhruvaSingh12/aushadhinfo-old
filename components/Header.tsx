@@ -1,10 +1,9 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import Button from "./Button";
-import { HiHome } from "react-icons/hi";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
@@ -12,10 +11,9 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import useLoadAvatar from "@/hooks/useLoadAvatar";
 import { UserDetails } from "@/types";
-import Input from "@/app/search/components/Input";
 
 interface HeaderProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
