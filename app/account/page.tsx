@@ -4,11 +4,12 @@ import Header from "@/components/Header";
 import Box from "@/components/Box";
 import Image from "next/image";
 import ListItem from "@/components/ListItem"; 
+import HealthForm from "./components/HealthForm";
 
 const AccountsPage = () => {
   return (
     <div className="bg-white rounded-lg h-full w-full overflow-hidden overflow-y-auto">
-      <div className="w-full flex flex-col gap-y-2 bg-white h-full">
+      {/* <div className="w-full flex flex-col gap-y-2 bg-white h-full">
         <Box>
           <Header>
             <div className="mt-1 px-2 md:px-2">
@@ -53,7 +54,10 @@ const AccountsPage = () => {
             </div>
           </div>
         </Box>
-      </div>
+      </div> */}
+      <div>
+        <HealthForm/>
+        </div>
     </div>
   );
 };

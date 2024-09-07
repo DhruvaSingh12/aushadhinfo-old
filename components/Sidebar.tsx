@@ -6,6 +6,8 @@ import React from "react";
 import { HiOutlineHome, HiMenuAlt2 } from "react-icons/hi";
 import Box from "./Box";
 import ListItem from "./ListItem";
+import BotpressChat from "./BotPressChat"; // Import BotpressChat component
+import { faBowlFood, faClockFour, faHospital, faNewspaper, faPills, faPrescriptionBottleMedical, faUserDoctor } from "@fortawesome/free-solid-svg-icons";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -24,32 +26,30 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex w-full  h-full fixed">
+    <div className="flex w-full h-full fixed">
       <div
         className={`${
-          isExpanded ? "w-[220px]" : "w-[110px]"
+          isExpanded ? "w-[230px]" : "w-[110px]"
         } flex flex-col gap-y-2 bg-white h-full px-2 pt-5 pb-1 transition-width duration-200`}
       >
-        <Box >
-          <div className="flex bg-gradient-to-r from-teal-500 to-blue-500 hover:bg-gray-200 rounded-full justify-between items-center py-2 px-2">
+        <Box>
+          <div className="flex bg-gray-200 hover:opacity-75 rounded-full justify-between items-center py-2 px-2">
             <button
               onClick={handleHomeClick}
-              className="flex justify-center items-center w-11 h-11 bg-transparent rounded-full hover:bg-neutral-600/35 transition duration-200"
+              className="flex justify-center items-center w-10 h-10 bg-transparent rounded-full hover:bg-neutral-600/35 transition duration-200"
             >
               <HiOutlineHome className="text-4xl text-black" />
             </button>
             <button
               onClick={toggleSidebar}
-              className="flex justify-center items-center w-11 h-11 bg-transparent rounded-full hover:bg-neutral-600/35 transition duration-200"
+              className="flex justify-center items-center w-10 h-10 bg-transparent rounded-full hover:bg-neutral-600/35 transition duration-200"
             >
               <HiMenuAlt2 className="text-4xl text-black" />
             </button>
           </div>
         </Box>
-        <Box className="overflow-y-aut items-center px-4 py-2 h-full">
-          <div>
-            
-          </div>
+        <Box className="overflow-y-auto items-center px-4 py-2 h-full">
+          <div></div>
           <div
             className="
               grid
@@ -62,33 +62,48 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             "
           >
             <ListItem
-              image="/images/tracking.png"
+              icon={faClockFour}
               name="Tracking"
-              href="artist"
+              href="tracking"
+            /> 
+            <ListItem
+                icon={faPills} 
+                name="Medicines"
+                href="/search"
             />
             <ListItem
-              image="/images/medicines.png"
-              name="Medicines"
-              href="search"
+              icon={faBowlFood}
+              name="Dietry"
+              href="dietry"
             />
             <ListItem
-              image="/images/store.png"
+              icon={faPrescriptionBottleMedical}
               name="Stores"
-              href="library"
+              href="stores"
             />
             <ListItem
-              image="/images/hospitals.png"
+              icon={faUserDoctor}
+              name="Doctors"
+              href="doctors"
+            />
+            <ListItem
+              icon={faHospital}
               name="Hospitals"
               href="hospitals"
             />
             <ListItem
-              image="/images/news.png"
+              icon={faNewspaper}
               name="News"
               href="news"
             />
           </div>
         </Box>
+
+        <Box className="flex justify-center items-center py-4 mt-auto">
+            <BotpressChat/>
+        </Box>
       </div>
+
       <main className="h-full w-full flex pt-2 pb-1 overflow-y-auto">
         {children}
       </main>

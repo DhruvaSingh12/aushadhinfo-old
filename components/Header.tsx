@@ -3,8 +3,8 @@
 import { usePathname, useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
-import { HiHome } from "react-icons/hi";
 import Button from "./Button";
+import { HiHome } from "react-icons/hi";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
@@ -73,22 +73,24 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
   return (
     <div className={twMerge("bg-white px-4 py-2 rounded-lg w-full h-full", className)}>
       <div className="w-full flex items-center justify-between">
- 
+        {/* Navigation buttons */}
         <div className="hidden rounded-full md:flex gap-x-2 items-center">
           <button
             onClick={() => router.back()}
-            className="rounded-full bg-gradient-to-r hover:bg-gray-200 from-teal-500 to-blue-500 flex items-center justify-center hover:opacity-75 transition"
+            className="rounded-ful flex rounded-full bg-gray-200 items-center justify-center hover:opacity-75 transition"
           >
             <RxCaretLeft className="text-black" size={50} />
           </button>
           <button
             onClick={() => router.forward()}
-            className="rounded-full bg-gradient-to-r from-teal-500 to-blue-500 hover:bg-gray-200 flex items-center justify-center hover:opacity-75 transition"
+            className="rounded-full bg-gray-200 flex items-center justify-center hover:opacity-75 transition"
           >
             <RxCaretRight className="text-black" size={50} />
           </button>
         </div>
-        <div className="flex items-center bg-gradient-to-r from-teal-500 to-blue-500 hover:bg-gray-200 px-2 py-2 rounded-full  gap-x-2 md:gap-x-2">
+
+        {/* User Authentication and Avatar */}
+        <div className="flex items-center bg-gradient-to-r from-teal-500 to-blue-500 hover:bg-gray-200 px-2 py-2 rounded-full gap-x-2 md:gap-x-2">
           {user ? (
             <div className="flex items-center gap-x-2">
               <Button
@@ -104,24 +106,25 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 <img
                   src={currentAvatarUrl}
                   alt="User Avatar"
-                  className="h-10 w-10 md:h-10 md:w-10 rounded-full object-cover"
+                  className="h-10 w-10 rounded-full object-cover"
                   onError={() => setCurrentAvatarUrl("/images/default-avatar.png")}
                 />
               </Button>
             </div>
           ) : (
             <div className="py-1">
-            <Button
-              onClick={authModal.onOpen}
-              className="bg-white text-black rounded-full px-2 py-2"
-            >
-              Log In
-            </Button>
+              <Button
+                onClick={authModal.onOpen}
+                className="bg-white text-black rounded-full px-2 py-2"
+              >
+                Log In
+              </Button>
             </div>
           )}
         </div>
       </div>
 
+      {/* Children components */}
       <div className="flex-grow h-full">{children}</div>
     </div>
   );

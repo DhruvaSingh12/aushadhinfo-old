@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Medicine} from '@/types';
-import Table from '@/components/Table';
+import Table from './Table';
+
 
 interface SearchContentProps {
     medicines: Medicine[];

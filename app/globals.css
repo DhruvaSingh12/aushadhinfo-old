@@ -10,3 +10,16 @@ body,
   background-color: white;
   color-scheme: dark;
 }
+
+html::-webkit-scrollbar{
+  width: .5rem;
+}
+
+html::-webkit-scrollbar-track{
+  background: white;
+}
+
+html::-webkit-scrollbar-thumb{
+  background: rgb(37 99 235);
+  border-radius: 70px;
+}

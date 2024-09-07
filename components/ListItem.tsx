@@ -1,18 +1,19 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Adjust based on your icon library
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'; // Import FontAwesome's IconDefinition type
 import { useUser } from "@/hooks/useUser";
 import useAuthModal from "@/hooks/useAuthModal";
 
 interface ListItemProps {
-    image: string;
+    icon: IconDefinition; // Use IconDefinition type for FontAwesome icons
     name: string;
     href: string;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
-    image, name, href
+    icon, name, href
 }) => {
     const router = useRouter();
     const { user } = useUser();
@@ -38,7 +39,6 @@ const ListItem: React.FC<ListItemProps> = ({
                 overflow-hidden
                 gap-x-1
                 bg-transparent
-                hover:bg-neutral-600/35
                 transition
                 p-1
                 cursor-pointer
@@ -48,14 +48,16 @@ const ListItem: React.FC<ListItemProps> = ({
                 relative
                 min-h-[50px]
                 min-w-[50px]
+                flex
+                hover:bg-neutral-500/35
+                rounded-full
+                items-center
+                p-2
+                justify-center
             ">
-                <Image
-                    className="object-cover border-y-2 border-x-2 border-black rounded-full"
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    src={image}
-                    alt="Image"
-                    
+                <FontAwesomeIcon
+                    icon={icon}
+                    className="text-4xl text-black"
                 />
             </div>
             <p className="font-bold text-black ml-2 truncate py-3">

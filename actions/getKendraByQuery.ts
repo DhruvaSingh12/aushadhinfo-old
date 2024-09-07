@@ -2,44 +2,47 @@ import { Kendra } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-
 const getKendraByQuery = async (query: string): Promise<Kendra[]> => {
-    const supabase = createServerComponentClient({
-        cookies: cookies
-    });
-    if (!query) {
-        const { data, error } = await supabase
-            .from('janaushadhi_kendra')
-            .select('*');
+  const supabase = createServerComponentClient({
+    cookies: cookies,
+  });
 
-        if (error) {
-            console.error(error);
-            return [];
-        }
+  // Log query for debugging
+  console.log("Search Query:", query);
 
-        return data as Kendra[];
-    }
+  if (!query) {
+    // Return all kendras if no search query is provided
     const { data, error } = await supabase
-        .from('janaushadhi_kendra')
-        .select('*');
+      .from('janaushadhi_kendra')
+      .select('*')
+      .order('state', { ascending: true });
 
     if (error) {
-        console.error(error);
-        return [];
+      console.error("Supabase Error:", error);
+      return [];
     }
 
-    const queryLower = query.toLowerCase();
-    const filteredData = (data as Kendra[]).filter((kendra) =>
-        (kendra.state && kendra.state.toLowerCase().includes(queryLower)) ||
-        (kendra.district && kendra.district.toLowerCase().includes(queryLower)) ||
-        (kendra.blocks && kendra.blocks.toLowerCase().includes(queryLower)) ||
-        (kendra.address && kendra.address.toLowerCase().includes(queryLower)) ||
-        (kendra.contact_person && kendra.contact_person.toLowerCase().includes(queryLower)) ||
-        (kendra.contact_details && kendra.contact_details.toLowerCase().includes(queryLower)) ||
-        (kendra.pincode && kendra.pincode.toString().includes(queryLower))
-    );
+    console.log("Fetched Data without Query:", data);
+    return data as Kendra[];
+  }
 
-    return filteredData;
+  // If there is a query, use Full-Text Search
+  const { data, error } = await supabase
+    .from('janaushadhi_kendra')
+    .select('*')
+    .textSearch('fts', query, {
+      type: 'plain',  // Use plain for simple text search
+      config: 'english',  // Language config for search
+    })
+    .order('state', { ascending: true });
+
+  if (error) {
+    console.error("Supabase Error:", error);
+    return [];
+  }
+
+  console.log("Fetched Data with Query:", data);
+  return data as Kendra[];
 };
 
 export default getKendraByQuery;
