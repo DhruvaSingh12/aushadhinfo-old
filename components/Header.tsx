@@ -9,7 +9,6 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import useLoadAvatar from "@/hooks/useLoadAvatar";
 import { UserDetails } from "@/types";
 
 interface HeaderProps {
@@ -23,7 +22,6 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-  const avatarUrl = useLoadAvatar(userDetails);
   const [currentAvatarUrl, setCurrentAvatarUrl] = useState<string>("/images/default-avatar.png");
 
   useEffect(() => {
@@ -51,12 +49,6 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     fetchUserProfile();
   }, [user, supabaseClient]);
 
-  useEffect(() => {
-    if (avatarUrl) {
-      setCurrentAvatarUrl(avatarUrl);
-    }
-  }, [avatarUrl]);
-
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
@@ -75,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         <div className="hidden rounded-full md:flex gap-x-2 items-center">
           <button
             onClick={() => router.back()}
-            className="rounded-ful flex rounded-full bg-gray-200 items-center justify-center hover:opacity-75 transition"
+            className="rounded-full bg-gray-200 flex items-center justify-center hover:opacity-75 transition"
           >
             <RxCaretLeft className="text-black" size={50} />
           </button>

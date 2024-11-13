@@ -6,6 +6,7 @@ import SupabaseProvider from "@/providers/SupabaseProvider";
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
 import ToasterProvider from "@/providers/ToasterProvider";  
+import { Analytics } from "@vercel/analytics/react"
 
 
 const font = Figtree({ subsets: ["latin"] });
@@ -32,6 +33,7 @@ export default async function RootLayout({
             <ModalProvider />
             <Sidebar>
               {children}
+              <Analytics/>
             </Sidebar>
           </UserProvider>
         </SupabaseProvider>

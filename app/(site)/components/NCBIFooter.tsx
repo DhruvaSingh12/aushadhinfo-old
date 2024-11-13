@@ -1,10 +1,11 @@
 import React from 'react';
 import { Pill, Stethoscope, Hospital, Newspaper } from 'lucide-react';
+import Link from 'next/link';
 
 const NCBIFooter: React.FC = () => {
   return (
     <footer className="text-sm">
-      <div className="bg-blue-600 text-white py-2 px-4">
+      <div className="bg-blue-600 text-white py-4 px-4">
         <h2 className="text-center font-bold mb-2">AushadhInfo</h2>
         <div className="flex justify-center space-x-6 mb-4">
           <Pill size={20} />
@@ -39,16 +40,26 @@ const NCBIFooter: React.FC = () => {
         </div>
 
         <div className="flex justify-center space-x-4 mt-4 text-xs">
-          <a href="#" className="hover:underline">Medical Check</a>
+          <a href="search" className="hover:underline">Medicine Availability</a>
           <span>|</span>
-          <a href="#" className="hover:underline">Live News</a>
+          <a href="/news" className="hover:underline">Live News</a>
           <span>|</span>
-          <a href="#" className="hover:underline">Doctor Appointments</a>
+          <a href="doctors" className="hover:underline">Doctor Appointments</a>
           <span>|</span>
-          <a href="#" className="hover:underline">Dietary Plans</a>
+          <Link href="/dietry">
+          <div className='hover:underline'>Dietary Plans</div>
+          </Link>
         </div>
       </div>
+      <div className="bg-blue-600 shadow-lg p-3 text-center">
+      <p className="text-sm text-white">
+      © 2024 AushadhInfo. All rights reserved. | Privacy Policy | Terms of Service
+    </p>
+
+      </div>
+      
     </footer>
+  
   );
 };
 

@@ -25,16 +25,6 @@ export interface Kendra {
     fts?: string; 
 }
 
-export interface Hospital {
-    _id?: string;
-    hospital_name?: string;
-    address?: string;
-    city?: string;
-    state?: string;
-    pincode?: string;
-    ppn?: string;
-}
-
 export interface Doctor {
     id: number;
     district: string;
@@ -46,3 +36,16 @@ export interface Doctor {
     facility_type: string;
     block: string;
   }
+
+  export interface Hospital {
+    id: number;
+    coordinates: string | null;
+    address: string | null;
+    name: string | null;
+    district: string | null;
+    pincode: string | null;
+    telephone: string | null;
+    category: string | null;
+    state: string | null;
+  }
+  
