@@ -31,7 +31,7 @@ const Search = async ({ searchParams }: SearchProps) => {
                 <Header>
                     <div className="mb-2 flex flex-col gap-y-3">
                     <h1 className="text-transparent bg-clip-text text-center bg-gradient-to-r from-teal-500 to-blue-600 text-4xl md:text-5xl font-extrabold uppercase tracking-widest">
-                            Search Nearest Jan Aushadhi Kendra
+                            Search Nearest Jan Aushadhi Kendras
                         </h1>
                     </div>
                  <SearchInput />
