@@ -34,7 +34,7 @@ const Search = async ({ searchParams }: SearchProps) => {
                             Search Nearest Jan Aushadhi Kendra
                         </h1>
                     </div>
-                            <SearchInput />
+                 <SearchInput />
                 </Header>
             </Box>
             <div className="
