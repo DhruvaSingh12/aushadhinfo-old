@@ -49,6 +49,12 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     fetchUserProfile();
   }, [user, supabaseClient]);
 
+  useEffect(() => {
+    if (avatarUrl) {
+      setCurrentAvatarUrl(avatarUrl);
+    }
+  }, [avatarUrl]);
+
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     router.refresh();
