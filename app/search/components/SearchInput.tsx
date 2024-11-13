@@ -21,7 +21,7 @@ const SearchInput = () => {
 
     return (
         <Input
-            placeholder="Search a medicine"
+            placeholder="Search a medicine or a medical condition"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
         />
