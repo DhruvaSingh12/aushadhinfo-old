@@ -33,7 +33,7 @@ export default async function RootLayout({
             <ModalProvider />
             <Sidebar>
               {children}
-              <Analytics/>
+              <Analytics />
             </Sidebar>
           </UserProvider>
         </SupabaseProvider>
