@@ -1,27 +1,23 @@
 "use client";
 
 import React from 'react';
-import { Medicine} from '@/types';
-import Table from './Table';
-
+import { MedicineData } from '@/types';
+import MedicineTable from './Table';
 
 interface SearchContentProps {
-    medicines: Medicine[];
+    medicines: MedicineData[];
 }
 
 const SearchContent: React.FC<SearchContentProps> = ({ medicines }) => {
-
     if (medicines.length === 0) {
         return (
             <div className="flex flex-col gap-y-2 w-full px-6 text-black">
-                Try searching some other medicine.
+                No medicines found. Try searching for something else.
             </div>
         );
     }
 
-    return (
-        <Table medicines={medicines}/>
-    );
+    return <MedicineTable medicines={medicines} />;
 };
 
 export default SearchContent;

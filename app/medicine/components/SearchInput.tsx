@@ -13,7 +13,7 @@ const SearchInput = () => {
 
     useEffect(() => {
         const url = qs.stringifyUrl({
-            url: '/search',
+            url: '/medicine',
             query: { query: debouncedQuery }
         });
         router.push(url);

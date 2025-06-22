@@ -5,6 +5,18 @@ export interface Medicine {
     indication?: string;       
 }
 
+export interface MedicineData{
+    id: number;
+    sub_category:string;
+    product_name:string;
+    salt_composition:string;
+    product_price:string;
+    product_manufacturer:string;
+    medicine_desc:string;
+    side_effects:string;
+    drug_interactions:string;
+}
+
 export interface UserDetails {
     id: string;
     first_name?: string;  
